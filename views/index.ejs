@@ -1,0 +1,24 @@
+
+<%- include("partials/header.ejs") %>
+
+        <!-- to declare a variable inside templet -->
+        <h1><%= header %></h1>
+    </div>
+    
+    <div class="box">
+        <% Items.forEach((task)=>{ %>
+            <div class="item">
+                <form action="/delete" method="POST">
+                    <input type="hidden" name="header" value="<%= header %>">
+                    <input type="checkbox" name="checked" value="<%= task._id %>" onChange="this.form.submit()">
+                </form>
+                <p><%= task.name %></p>
+            </div>
+        <% }); %>
+
+        
+        <form class="item" action="/add" method="POST">
+            <input type="text" name="item" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="button" value="<%= header %>">+</button>
+            
+<%- include("partials/footer.ejs") %>
