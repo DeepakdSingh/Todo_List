@@ -2,10 +2,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import _ from "lodash";
+import pkg from "dotenv";
+pkg.config();
 
 const app = express();
 
-mongoose.connect("mongodb+srv://Deepak:deepaks9867@cluster0.yzmvm.mongodb.net/Todo?retryWrites=true&w=majority");
+mongoose.connect(process.env.TODODB);
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('view engine','ejs');
